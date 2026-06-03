@@ -1,0 +1,41 @@
+services:
+
+  campusfit-mongo:
+    image: mongo
+    container_name: campusfit-mongo
+
+    restart: always
+
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: qwerty
+
+    volumes:
+      - mongo-data:/data/db
+
+    networks:
+      - campusfit-network
+
+  campusfit-app:
+    build: .
+    container_name: campusfit-app-container
+
+    restart: always
+
+    depends_on:
+      - campusfit-mongo
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      MONGO_URI: mongodb://admin:qwerty@campusfit-mongo:27017/campusfit_db?authSource=admin
+
+    networks:
+      - campusfit-network
+
+volumes:
+  mongo-data:
+
+networks:
+  campusfit-network:
