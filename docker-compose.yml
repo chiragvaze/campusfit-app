@@ -17,7 +17,7 @@ services:
       - campusfit-network
 
   campusfit-app:
-    build: .
+    image: chiragvaze/campusfit-app
     container_name: campusfit-app-container
 
     restart: always
