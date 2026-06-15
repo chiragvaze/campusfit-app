@@ -11,8 +11,9 @@ services:
       - "50000:50000"
     volumes:
       - jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
+      - ${HOME}/.docker/desktop/docker.sock:/var/run/docker.sock
       - ${HOME}/.kube:/root/.kube:ro
+      - ${HOME}/.minikube:/home/chiragvaze/.minikube:ro
     environment:
       - DOCKER_HOST=unix:///var/run/docker.sock
     restart: unless-stopped
