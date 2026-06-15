@@ -1,7 +1,6 @@
 pipeline {
 agent any
 
-```
 environment {
     DOCKER_IMAGE = "chiragvaze/campusfit-app"
     DOCKER_CREDENTIALS_ID = "dockerhub-credentials"
@@ -73,7 +72,5 @@ post {
         echo 'Deployment Failed'
     }
 }
-```
-
 }
 
